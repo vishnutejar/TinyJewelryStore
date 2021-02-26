@@ -1,4 +1,5 @@
 ﻿using System;
+using TinyJewelryStore.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace TinyJewelryStore
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TinyJewelryStore.Views.LoginPage"
+             xmlns:controls="clr-namespace:TinyJewelryStore.CustomControls"
+             >
+  
+    <ContentPage.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Style="{StaticResource LableStyle}" Text="UserName" />
+            <Frame Grid.Row="1" Style="{StaticResource FrameStyle}">
+                <controls:CustomEntry x:Name="TxtUserName"  Style="{StaticResource EntryStyle}"></controls:CustomEntry>
+            </Frame>
+            <Label Grid.Row="2" Style="{StaticResource LableStyle}" Text="Password"></Label>
+            <Frame Grid.Row="3" Style="{StaticResource FrameStyle}">
+                <controls:CustomEntry IsPassword="True" x:Name="txtPassword" Style="{StaticResource EntryStyle}"></controls:CustomEntry>
+            </Frame>
+            <StackLayout Grid.Row="4"  Margin="20" Orientation="Horizontal">
+                <Button   BorderRadius="6" WidthRequest="100" x:Name="LoginButton" TextColor="White"  Text="Login"></Button>
+                <Button   BorderRadius="6" WidthRequest="100" x:Name="CancelButton" TextColor="White"  Text="Cancel"></Button>
+            </StackLayout>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>
