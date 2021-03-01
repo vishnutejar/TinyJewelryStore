@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<userlist>
+  <user UserId="12321231"  Email="vishnutejar@gmail.com" UserType="Regular" Password="vishnu@123"></user>
+  <user UserId="12321232"  Email="vishnutejar1@gmail.com" UserType="Privileged" Password="vishnu@123"></user>
+</userlist>

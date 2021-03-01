@@ -16,5 +16,6 @@ namespace TinyJewelryStore.Views
         {
             InitializeComponent();
         }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using TinyJewelryStore.ViewModels;
+using TinyJewelryStore.ViewModels.Services;
 using TinyJewelryStore.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,7 +12,8 @@ namespace TinyJewelryStore
         public App()
         {
             InitializeComponent();
-
+            DependencyService.Register<IMessageService, MessageService>();
+            DependencyService.Register<INavigationService, NavigationService>();
             MainPage = new NavigationPage( new LoginPage());
         }
 

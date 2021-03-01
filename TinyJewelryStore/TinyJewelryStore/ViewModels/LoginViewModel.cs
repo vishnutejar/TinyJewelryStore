@@ -1,24 +1,40 @@
-﻿using System;
-using System.ComponentModel;
-using TinyJewelryStore.Views;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using TinyJewelryStore.models;
+using TinyJewelryStore.utils;
+using TinyJewelryStore.ViewModels.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TinyJewelryStore.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public LoginViewModel() { }
+        private IMessageService _messageService;
+        private INavigationService _navigationService;
+
+        public List<UserInformation> userInformation { get; set; }
+        public LoginViewModel()
+        {
+            _messageService = DependencyService.Get<IMessageService>();
+            _navigationService = DependencyService.Get<INavigationService>();
+        }
 
         private string _email { get; set; }
         private string _password { get; set; }
+
 
         public string Email
         {
             set
             {
                 _email = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+                this.Notify("Email");
             }
             get
             {
@@ -31,12 +47,12 @@ namespace TinyJewelryStore.ViewModels
             set
             {
                 _password = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Password"));
+                this.Notify("Password");
             }
             get
             {
 
-                return _email;
+                return _password;
             }
         }
 
@@ -51,7 +67,8 @@ namespace TinyJewelryStore.ViewModels
         }
         public Command CancelCommand
         {
-            get {
+            get
+            {
 
                 return new Command(CancelPage);
             }
@@ -59,19 +76,50 @@ namespace TinyJewelryStore.ViewModels
 
         private void CancelPage()
         {
-            Application.Current.MainPage.Navigation.PopAsync();
+            Process.GetCurrentProcess().CloseMainWindow();
+            Process.GetCurrentProcess().Close();
         }
 
         private void Login()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+
+
+            if (string.IsNullOrEmpty(Email) && string.IsNullOrEmpty(Password))
             {
-                Application.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+                _messageService.ShowAsync("Please enter Email and Password");
             }
             else
             {
-                Application.Current.MainPage.Navigation.PushAsync(new EstimationGoldPage());
+
+                List<UserInformation> userdata = LoadXMLData().Result;
+                UserInformation loginUserInf = userdata?.FirstOrDefault(u => u.Email.Equals(Email) && u.Password.Equals(Password));
+                if (loginUserInf != null)
+                {
+                    Preferences.Set(Constances.UserType, loginUserInf?.UserType);
+                    _navigationService.NavigateToEstimateGoldPage();
+                }
+                else {
+                    _messageService.ShowAsync("Please enter Email and Password");
+                }
             }
         }
+
+        private async Task<List<UserInformation>> LoadXMLData()
+        {
+            var assembly = typeof(MainPage).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("TinyJewelryStore" + "." + "userinformation.xml");
+
+            XDocument doc = XDocument.Load(stream);
+            IEnumerable<UserInformation> users = from s in doc.Descendants("user")
+                                                 select new UserInformation
+                                                 {
+                                                     Email = s.Attribute("Email").Value,
+                                                     UserType = s.Attribute("UserType").Value,
+                                                     Password = s.Attribute("Password").Value,
+                                                     UserId = s.Attribute("UserId").Value
+                                                 };
+            return users.ToList();
+        }
+
     }
 }

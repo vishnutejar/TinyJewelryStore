@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyJewelryStore.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyJewelryStore.iOS", "TinyJewelryStore\TinyJewelryStore.iOS\TinyJewelryStore.iOS.csproj", "{EDBC3E42-6FB4-4215-B0C9-24B112EFC283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyJewelryStore", "TinyJewelryStore\TinyJewelryStore\TinyJewelryStore.csproj", "{CF39CF0D-C65C-4086-B92E-44624CCB9468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyJewelryStore", "TinyJewelryStore\TinyJewelryStore\TinyJewelryStore.csproj", "{CF39CF0D-C65C-4086-B92E-44624CCB9468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
