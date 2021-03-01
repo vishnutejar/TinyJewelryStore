@@ -4,9 +4,9 @@
              x:Class="TinyJewelryStore.App">
     <Application.Resources>
         <!-- Colors -->
-        <Color x:Key="AppBackgroundColor">Gray</Color>
+        <Color x:Key="AppBackgroundColor">#BDBDBD</Color>
         <Color x:Key="BorderColor">#1976D2</Color>
-        <Color x:Key="ButtonBackgroundColor">#101010</Color>
+        <Color x:Key="ButtonBackgroundColor">#757575</Color>
 
         <!-- Implicit style -->
         <Style TargetType="Button">

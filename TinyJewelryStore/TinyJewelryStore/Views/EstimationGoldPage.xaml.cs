@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace TinyJewelryStore.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class EstimationGoldPage : ContentPage
     {
-        public LoginPage()
+        public EstimationGoldPage()
         {
             InitializeComponent();
-        }
-
-        private void GoToEstimateScreen(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new EstimationGoldPage());
         }
     }
 }
