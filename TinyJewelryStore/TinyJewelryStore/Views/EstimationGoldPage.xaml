@@ -4,6 +4,7 @@
              x:Class="TinyJewelryStore.Views.EstimationGoldPage"
              xmlns:controls="clr-namespace:TinyJewelryStore.CustomControls"
              xmlns:viewmodel="clr-namespace:TinyJewelryStore.ViewModels"
+             Title="Estimation"
           >
     <ContentPage.BindingContext>
         <viewmodel:EstimationGoldViewModel/>
@@ -26,8 +27,8 @@
 
                 <Label Grid.Row="0" Style="{StaticResource LableStyle}" HorizontalOptions="EndAndExpand" Text="{Binding DisplayUserType}" />
                 <Label Grid.Row="1" Style="{StaticResource LableStyle}" Text="Gold Price (per gram)" />
-                <Frame Grid.Row="2"  Style="{StaticResource FrameStyle}">
-                    <controls:CustomEntry x:Name="TxtGoldPrice" Keyboard="Numeric" Text="{Binding GoldPrice}" Style="{StaticResource EntryStyle}"/>
+                <Frame Grid.Row="2"  Style="{StaticResource FrameStyle}" >
+                    <controls:CustomEntry x:Name="TxtGoldPrice"  Keyboard="Numeric" Text="{Binding GoldPrice}" Style="{StaticResource EntryStyle}"/>
                 </Frame>
                 <Label Grid.Row="3" Style="{StaticResource LableStyle}" Text="weight (gram)" />
                 <Frame Grid.Row="4"  Style="{StaticResource FrameStyle}">
@@ -41,7 +42,7 @@
                 <Frame Grid.Row="8"  Style="{StaticResource FrameStyle}" IsVisible="{Binding IsPrivilegedUser}">
                     <controls:CustomEntry x:Name="TxtDiscount" Keyboard="Numeric" Text="{Binding Discount}"  Style="{StaticResource EntryStyle}"/>
                 </Frame>
-                <Grid Grid.Row="9" Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                <Grid Grid.Row="9"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height=" Auto"/>
                         <RowDefinition Height=" Auto"/>

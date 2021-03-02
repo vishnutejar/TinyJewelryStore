@@ -4,7 +4,7 @@
              x:Class="TinyJewelryStore.Views.LoginPage"
              xmlns:controls="clr-namespace:TinyJewelryStore.CustomControls"
              xmlns:viewmodel="clr-namespace:TinyJewelryStore.ViewModels"
-    >
+             Title="Login">
     <ContentPage.BindingContext>
         <viewmodel:LoginViewModel/>
     </ContentPage.BindingContext>
